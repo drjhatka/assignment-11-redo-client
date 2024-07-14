@@ -1,10 +1,13 @@
-import React from 'react';
+import { createContext, useEffect, useState } from 'react';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile, onAuthStateChanged, signOut } from "firebase/auth";
+import app from '../firebase.config';
 
+export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
     
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-  
+
     const auth = getAuth(app)
 
     const doNativeRegister = (name, photoURL, email, password) => {
