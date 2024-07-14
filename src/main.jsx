@@ -4,6 +4,10 @@ import App from './App.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Components/Home/Home.jsx'
+import Assignments from './Components/Assignments/Assignments.jsx'
+import PrivateRoute from './Components/Auth/PrivateRoute.jsx'
+import AddAssignment from './Components/Assignments/AddAssignment.jsx'
+import ViewAssignment from './Components/Assignments/ViewAssignment.jsx'
 
 const router = createBrowserRouter([
   {
@@ -15,23 +19,21 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />
       },
-      // {
-      //   path: '/services',
-      //   element: <AllServices />
-      // },
-      // {
-      //   path: '/add-service',
-      //   element: <PrivateRoute><AddService /></PrivateRoute>
-      // },
-      // {
-      //   path: '/service/:id',
-      //   element: <ViewService />
-      // },
-      // {
-      //   path: '/service-todo',
-      //   element: <ToDoServices />
-      // },
-      // {
+      {
+        path: '/assignments',
+        element: <Assignments/>
+      },
+      {
+        path:'/assignment/:id',
+        element:<ViewAssignment/>
+      },
+      {
+        path: '/create-assignment',
+        element: <PrivateRoute><AddAssignment/></PrivateRoute>
+      },      
+       
+    
+      {/* // {
       //   path: '/provider-services',
       //   element: <PrivateRoute><UserServices /></PrivateRoute>
       // },
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
       // {
       //   path: '/register',
       //   element: <Register />
-      // },
+      // }, */}
 
     ]
   }
