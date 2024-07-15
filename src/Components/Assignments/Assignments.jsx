@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DataContext } from '../Contexts/DataProvider';
+import AssignmentCard from './AssignmentCard';
 
 const Assignments = () => {
+   const {assignmentData:assignments, isLoading} = useContext(DataContext)
+   //console.log(assignments)
     return (
-        <div>
-            
+        <div className='lg:w-[90%] md:gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto mt-4'>
+            {
+                !isLoading &&  assignments.map((assignment, index)=>{
+                    return <AssignmentCard key={index} assignment={assignment}></AssignmentCard>
+                })
+            }
         </div>
     );
 };
