@@ -9,7 +9,7 @@ const PendingAssignments = () => {
      return (
          <div className='lg:w-[90%] md:gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto mt-4'>
              {
-                 !isLoading &&  assignments.map((assignment, index)=>{
+                 !isLoading &&  assignments.filter(assignment=>assignment.status=='Pending').map((assignment, index)=>{
                      return <AssignmentCard key={index} assignment={assignment}></AssignmentCard>
                  })
              }

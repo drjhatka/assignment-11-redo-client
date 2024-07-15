@@ -29,7 +29,6 @@ const Assignments = () => {
         }
     })
     //mutate()
-    //!isLoading && setLoadedData(data)
 
    
     const handleFilter =()=>{   
@@ -40,6 +39,7 @@ const Assignments = () => {
         }  
         else{
             mutate({difficulty:event.target.value})
+            setLoadedData(data)
 
         }   
         //queryClient.invalidateQueries(['filter-assignments'])
@@ -62,7 +62,7 @@ const Assignments = () => {
             </div>
             <div className='lg:w-[90%] md:gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto mt-4'>
                 {
-                    isLoading ? <h1>Loading...</h1>:  loadedData.map((assignment, index) => {
+                    isLoading ? <h1>Loading...</h1>:  loadedData?.map((assignment, index) => {
                         return <AssignmentCard key={index} assignment={assignment}></AssignmentCard>
                     })
                 }

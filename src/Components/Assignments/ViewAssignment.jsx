@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { DataContext } from '../Contexts/DataProvider';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const ViewAssignment = () => {
     const { assignmentData, isLoading } = useContext(DataContext)
@@ -33,8 +33,7 @@ const ViewAssignment = () => {
                                     <span className='badge badge-secondary px-20 py-4 text-white font-semibold'>Marks : {assignment.marks.toUpperCase()}</span>
                                 </div>
                                 <div className='flex justify-center gap-10'>
-                                    <button className='btn btn-primary w-40 '>Update</button>
-                                    <button className='btn btn-primary w-40 '>Take Assignment</button>
+                                    <Link to={'/submit-assignment/'+assignment?._id} className='btn btn-primary w-40 '>Take Assignment</Link>
                                 </div>
                             </div>
                         </div>

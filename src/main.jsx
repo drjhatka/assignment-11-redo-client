@@ -16,6 +16,8 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import Login from './Components/Auth/Login.jsx'
 import Register from './Components/Auth/Register.jsx'
 import PendingAssignments from './Components/Assignments/PendingAssignments.jsx'
+import SubmissionForm from './Components/Submission/SubmissionForm.jsx'
+import Submission from './Components/Assignments/Submission.jsx'
 
 
 const queryClient = new QueryClient()
@@ -44,6 +46,10 @@ const router = createBrowserRouter([
       {
         path:'/pending-assignments',
         element:<PendingAssignments></PendingAssignments>
+      },
+      {
+        path:'/submit-assignment/:id',
+        element:<Submission/>
       },
       {
         path:'/login',

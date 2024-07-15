@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AssignmentCard = ({assignment}) => {
-    const {_id,title, description, marks,imageUrl,difficulty, userName, userEmail, userPhotoUrl}= assignment
+    const {_id,title, description,status, marks,imageUrl,difficulty, userName, userEmail, userPhotoUrl}= assignment
     return (
         <div>
             <div className="card bg-base-100 shadow-xl border-2">
@@ -20,6 +20,7 @@ const AssignmentCard = ({assignment}) => {
                     <div className="card-actions flex flex-grow justify-between border-t-2 py-2">
                         <div className="badge badge-secondary py-4 text-white font-semibold">Difficulty: {difficulty.toUpperCase()}</div>
                         <div className="badge badge-accent py-4 text-white font-semibold">Marks: {marks}</div>
+                        <div className="badge badge-accent py-4 text-white font-semibold">Status: {status}</div>
                     </div>
                     <div className='text-center mt-2 border-t-2 py-2'>
                         <Link to={'/assignment/'+_id}  className='btn btn-secondary'>View Assignment</Link>
