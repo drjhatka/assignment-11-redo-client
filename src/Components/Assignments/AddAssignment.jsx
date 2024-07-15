@@ -3,7 +3,7 @@ import CrudForm from '../HTMLUtilities/Forms/CrudForm';
 import { AuthContext } from '../Contexts/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import Alert from '../HTMLUtilities/Alerts/Alert';
+import {Alert} from '../HTMLUtilities/Alerts/Alert';
 
 const AddAssignment = () => {
     const {user} = useContext(AuthContext)
@@ -31,10 +31,10 @@ const AddAssignment = () => {
                     userPhotoUrl: user.photoURL ? user.photoURL:'default url'
                 }
             axios.post('/create-assignment/', assignment).then(
-                <Alert title={'Success'} text={'Assignment Created Successfully'} icon={'success'}></Alert>
+                Alert('Success','Assignment Created Successfully','success')
             ).
                 catch(error=>{
-                     <Alert title={'Error'} text={error.message} icon={'error'}></Alert>
+                Alert('Success',error.message,'success')
 
                     console.log(error)
                 })

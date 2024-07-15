@@ -1,8 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
+import { DataContext } from '../../Contexts/DataProvider';
 
 const Navbar = ({navMenus, uriList, logOutHandler, searchHandler}) => {
-
+  const {user, doLogout} = useContext(AuthContext)
+  console.log(user)
+  const navigate =useNavigate()
+  const logOut =()=>{
+    doLogout()
+    navigate('/login')
+  }
 
   return (
     <div>
@@ -28,10 +36,11 @@ const Navbar = ({navMenus, uriList, logOutHandler, searchHandler}) => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
               {
                 navMenus.map((menu, index) => {
-                  if (index > 0) {
+                  if (user && index > 0 && index<3 ) {
                     return <li key={Math.random() * 1000}><Link to={uriList[index]}> {navMenus[index]}</Link></li>
 
                   }
+                  
                 })
               }
             </ul>
@@ -42,11 +51,18 @@ const Navbar = ({navMenus, uriList, logOutHandler, searchHandler}) => {
           <ul className="menu text-blue-900 font-semibold  menu-horizontal px-1">
             {
               navMenus.map((menu, index) => {
-                if (index > 0) {
-                  return <li className='shadow-lg h-full hover:bg-emerald-200 text-center text-sm border-2 mr-2 rounded-md bg-slate-50' key={Math.random() * 1000}><Link to={uriList[index]}> {navMenus[index]}</Link></li>
-
+                if(user){
+                  while(index<4){
+                    return <li className='shadow-lg h-full hover:bg-emerald-200 text-center text-sm border-2 mr-2 rounded-md bg-slate-50' key={Math.random() * 1000}><Link to={uriList[index]}> {navMenus[index]}</Link></li>
+                  }
                 }
+               else{
+                  if(index !==2 && index !==3 ){
+                    return <li className='shadow-lg h-full hover:bg-emerald-200 text-center text-sm border-2 mr-2 rounded-md bg-slate-50' key={Math.random() * 1000}><Link to={uriList[index]}> {navMenus[index]}</Link></li>
+                  }
+               }
               })
+
             }
           </ul>
         </div>
@@ -59,7 +75,7 @@ const Navbar = ({navMenus, uriList, logOutHandler, searchHandler}) => {
               <div className="w-10 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                  src={user?user.photoURL:"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"} />
               </div>
             </div>
             <ul
@@ -72,7 +88,7 @@ const Navbar = ({navMenus, uriList, logOutHandler, searchHandler}) => {
                 </a>
               </li>
               <li><a>Settings</a></li>
-              <li><a>Logout</a></li>
+              <li ><button onClick={logOut}>Logout</button></li>
             </ul>
           </div>
         </div>

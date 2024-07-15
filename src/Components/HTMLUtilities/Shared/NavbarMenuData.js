@@ -9,7 +9,7 @@ export const NavbarMenuData = () => {
         '/login']
 
     const navMenus = [
-        'Assignment Maestro',
+        'Home',
         'Assignments',
         'Create Assignment',
         'Pending Assignments',

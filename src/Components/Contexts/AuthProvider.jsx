@@ -10,7 +10,7 @@ const AuthProvider = ({children}) => {
 
     const auth = getAuth(app)
 
-    const doNativeRegister = (name, photoURL, email, password) => {
+    const doNativeRegister = async (name, photoURL, email, password) => {
         return createUserWithEmailAndPassword(auth, email, password).then(user => {
             updateUserInfo(name, photoURL)
             setUser(user)
@@ -27,15 +27,15 @@ const AuthProvider = ({children}) => {
         }//end update user info 
    
 
-    const doNativeLogin = (email, password) => {
+    const doNativeLogin = async(email, password) => {
             return signInWithEmailAndPassword(auth, email, password).then(()=>setLoading(false))
 
         }
-    const doExternalLogin = ( provider) => {
+    const doExternalLogin = async ( provider) => {
         return signInWithPopup(auth,provider)
     }
 
-    const doLogout = ()=>{
+    const doLogout = async ()=>{
         return signOut(auth).then(()=>setLoading(false))
     }
     useEffect(()=>{

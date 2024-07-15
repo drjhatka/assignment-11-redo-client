@@ -1,7 +1,7 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 
-const Alert = ({title,text,icon}) => {
+export const Alert = (title,text,icon) => {
     return (
         Swal.fire({
             title: title,
@@ -23,5 +23,3 @@ const Alert = ({title,text,icon}) => {
         }) 
     );
 };
-
-export default Alert;

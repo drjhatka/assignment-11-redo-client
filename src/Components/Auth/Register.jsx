@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import LoginTemplate from '../HTMLUtilities/Auth/LoginTemplate';
-import Alert from '../HTMLUtilities/Alerts/Alert';
+import {Alert} from '../HTMLUtilities/Alerts/Alert';
 import { validateInput } from '../HTMLUtilities/Auth/LoginValidation';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
