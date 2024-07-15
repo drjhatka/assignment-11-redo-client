@@ -15,6 +15,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import Login from './Components/Auth/Login.jsx'
 import Register from './Components/Auth/Register.jsx'
+import PendingAssignments from './Components/Assignments/PendingAssignments.jsx'
 
 
 const queryClient = new QueryClient()
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: '/create-assignment',
         element: <PrivateRoute><AddAssignment /></PrivateRoute>
+      },
+      {
+        path:'/pending-assignments',
+        element:<PendingAssignments></PendingAssignments>
       },
       {
         path:'/login',

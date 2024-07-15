@@ -16,9 +16,9 @@ const ViewAssignment = () => {
                     assignmentData.filter(assignment => assignment._id == id).map((assignment, index) => {
 
                         console.log('---< ',assignmentData)
-                        return <div className='py-4 px-5 grid grid-cols-1 md:grid-cols-2' key={index}>
-                            <div>
-                            <img src={"/"+assignment?.imageUrl} alt="Assignment Image" />
+                        return <div className='py-4 px-5  grid grid-cols-1 md:grid-cols-2' key={index}>
+                            <div className='flex justify-center items-center'>
+                            <img src={assignment?.imageUrl} alt="Assignment Image" />
 
                             </div>
                                 

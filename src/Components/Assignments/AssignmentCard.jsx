@@ -5,11 +5,12 @@ const AssignmentCard = ({assignment}) => {
     const {_id,title, description, marks,imageUrl,difficulty, userName, userEmail, userPhotoUrl}= assignment
     return (
         <div>
-            <div className="card bg-base-100 shadow-xl">
+            <div className="card bg-base-100 shadow-xl border-2">
                 <figure className='h-44'>
                     <img
+                    className='cover '
                         src={imageUrl}
-                        alt="Shoes" />
+                        alt="Image" />
                 </figure>
                 <div className="flex flex-grow card-body">
                     <h2 className="card-title text-2xl shadow-md py-2 px-4 bg-slate-100 text-red-700">

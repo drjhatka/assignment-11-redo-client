@@ -14,7 +14,7 @@ const DataProvider = ({children}) => {
         queryFn: async () => {
             const result = await axios.get('/assignments')
             setAssignmentData(result.data)
-            console.log('Assignments ', result.data)
+            //console.log('Assignments ', result.data)
             return result.data;
         },
         onSuccess:()=>{
