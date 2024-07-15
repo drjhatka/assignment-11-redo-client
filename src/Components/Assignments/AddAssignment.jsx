@@ -35,7 +35,6 @@ const AddAssignment = () => {
             ).
                 catch(error=>{
                 Alert('Success',error.message,'success')
-
                     console.log(error)
                 })
     }
