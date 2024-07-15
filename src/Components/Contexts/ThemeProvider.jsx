@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { createContext } from 'react';
 
-const ThemeProvider = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+export const ThemeContext = createContext('light')
+const ThemeProvider = ({children}) => {
+    return <ThemeContext.Provider>
+        {children}
+    </ThemeContext.Provider>
 };
 
 export default ThemeProvider;
