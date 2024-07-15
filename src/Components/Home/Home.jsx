@@ -1,5 +1,4 @@
-import React from 'react';
-import AddForm from '../HTMLUtilities/Forms/CrudForm';
+import Slider from '../HTMLUtilities/Slider/Slider';
 
 const Home = () => {
     const submitHandler =()=>{
@@ -8,9 +7,8 @@ const Home = () => {
         console.log(form.title.value)
     }
     return (
-        <div>
-            <AddForm fieldNameList={['title','description', 'marks','imageUrl','difficulty','dueDate']} 
-            fieldTypeList={['text','text','text','text','text','date']  } colSpan={2} AddUpdate={'Add'} submitHandler={submitHandler}></AddForm>
+        <div className='w-[80%] mx-auto'>
+            <Slider/>
         </div>
     )
 };
