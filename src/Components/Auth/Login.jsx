@@ -17,10 +17,10 @@ const Login = () => {
             doNativeLogin(event.target.email.value, event.target.password.value).
             then(user=>{
                 setUser(user) 
-                return <Alert title={'Success','Logged In Successfully', 'success'}></Alert>
+                return <Alert title={'Success'} text={'Login Success'} icon={ 'success'}></Alert>
             }).
             catch(error =>{
-                return <Alert title={'Success','Logged In Successfully', 'success'}></Alert>
+                return <Alert title={'Success'} text={error.message} icon={'error'}></Alert>
             })
             //create JWT token on the server
 
@@ -29,6 +29,7 @@ const Login = () => {
            
              navigate('/',{replace:true})
     }
+}
     const externalLogin =()=>{
 
     }
@@ -37,6 +38,6 @@ const Login = () => {
             <LoginTemplate fieldNames={['email','password']} lebel={'Login'} typeNames={['email','password']} loginHandler={loginHandler} externalLogin={externalLogin} ></LoginTemplate>
         </div>
     );
-};
+}
 
-export default Login;
+export default Login
