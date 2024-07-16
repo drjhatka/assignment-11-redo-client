@@ -1,7 +1,8 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-const Slider = () => {
+const Slider = ({slides}) => {
+    console.log('slides ', slides)
     return (
         <div className=''>
             <Carousel 
@@ -9,13 +10,13 @@ const Slider = () => {
                 arrows
                 autoPlaySpeed={1000}
                 centerMode={false}
-                className='border-2 max-h-96 mt-4 border-red-700 rounded-lg'
+                className='shadow-lg border-2 max-h-96 mt-4  rounded-lg'
                 containerClass="container"
                 dotListClass=""
                 draggable
                 focusOnSelect={false}
                 infinite
-                itemClass=" border-2 border-red-200 "
+                itemClass=" "
                 keyBoardControl
                 minimumTouchDrag={80}
                 pauseOnHover
@@ -54,61 +55,31 @@ const Slider = () => {
                 slidesToSlide={1}
                 swipeable
             >
-
-                <div className=''>
-                    <h1 className='text-2xl z-30 mt-10 text-white font-bold'>SOME TEXT ON TOP OF PICTURE IN THE CAROUSEL</h1>
-                    <img
-                        src=""
-                        style={{
-                            display: 'block',
-                            height: '100%',
-                            margin: 'auto',
-                            width: '100%',
-                            border:'1px solid red',
-                            zIndex:'10'
-                        }}
-                    />
-
-                </div>
-                <img
-                    src="https://images.unsplash.com/photo-1549396535-c11d5c55b9df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                    style={{
-                        display: 'block',
-                        height: '100%',
-                        margin: 'auto',
-                        width: '100%'
-                    }}
-                />
-                <img
-                    src="https://images.unsplash.com/photo-1550133730-695473e544be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                    style={{
-                        display: 'block',
-                        height: '100%',
-                        margin: 'auto',
-                        width: '100%'
-                    }}
-                />
-                <img
-                    src="https://images.unsplash.com/photo-1550167164-1b67c2be3973?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                    style={{
-                        display: 'block',
-                        height: '100%',
-                        margin: 'auto',
-                        width: '100%'
-                    }}
-                />
-                <img
-                    src="https://images.unsplash.com/photo-1550338861-b7cfeaf8ffd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                    style={{
-                        display: 'block',
-                        height: '100%',
-                        margin: 'auto',
-                        width: '100%'
-                    }}
-                />
+                
+                {
+                    slides?.map(slide=>{
+                        return  <div key={Math.random()*1000} style={{position:'relative' , height:'600px',  background: `url(${slide.imageUrl}), linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)`,   backgroundSize:'cover'}}>
+                                
+                                <div className=''>
+                            <h1 style={{position:'absolute', bottom:'55%', background: ` linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)`}} className='px-10 py-5 w-full text-white font-bold text-4xl' >{slide.title}</h1>
+                            <p className='px-10 font-bold absolute bottom-60 text-white py-2 w-full' style={{background: `linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)`}}>{slide.description}</p>
+                        </div>
+                        
+    
+                    </div>
+                    })
+                }
+                
+                
             </Carousel>
         </div>
     );
 };
 
 export default Slider;
+/*
+* Created with https://www.css-gradient.com
+* Gradient link: https://www.css-gradient.com/?c1=2b302f&c2=5e4f5d&gt=l&gd=dtr
+*/
+//background: #2B302F;
+//background: linear-gradient(225deg, #2B302F, #5E4F5D);

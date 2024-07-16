@@ -22,6 +22,7 @@ const AssignmentCard = ({assignment}) => {
                         <div className="badge badge-accent py-4 text-white font-semibold">Marks: {marks}</div>
                         <div className="badge badge-accent py-4 text-white font-semibold">Status: {status}</div>
                     </div>
+                    
                     <div className='text-center mt-2 border-t-2 py-2'>
                         <Link to={'/assignment/'+_id}  className='btn btn-secondary'>View Assignment</Link>
                     </div>

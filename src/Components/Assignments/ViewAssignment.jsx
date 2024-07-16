@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { DataContext } from '../Contexts/DataProvider';
 import { Link, useParams } from 'react-router-dom';
+import { AuthContext } from '../Contexts/AuthProvider';
 
 const ViewAssignment = () => {
     const { assignmentData, isLoading } = useContext(DataContext)
+    const {user} = useContext(AuthContext)
     const id = useParams().id
     console.log('view ',assignmentData)
     //console.log('as',assignment)
@@ -32,9 +34,16 @@ const ViewAssignment = () => {
                                     <span className='badge badge-info px-20 py-4 text-white font-semibold'>Difficulty : {assignment.difficulty.toUpperCase()}</span>
                                     <span className='badge badge-secondary px-20 py-4 text-white font-semibold'>Marks : {assignment.marks.toUpperCase()}</span>
                                 </div>
-                                <div className='flex justify-center gap-10'>
-                                    <Link to={'/submit-assignment/'+assignment?._id} className='btn btn-primary w-40 '>Take Assignment</Link>
+                                {
+                                    user && <div className='flex border-2 py-2 px-2 justify-between'>
+                                        <Link to={'/submit-assignment/'+assignment?._id} className='btn btn-success text-white w-40 '>Take Assignment</Link>
+                                        <button className='btn btn-primary '>Update</button>
+                                        <button className='btn btn-warning text-white'>Delete</button>
+                                        <div className='flex justify-center gap-10'>
                                 </div>
+                                    </div>
+                                }
+                                
                             </div>
                         </div>
 
