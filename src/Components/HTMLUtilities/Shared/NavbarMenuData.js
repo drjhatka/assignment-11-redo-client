@@ -5,11 +5,12 @@ export const NavbarMenuData = () => {
         '/assignments',
         '/create-assignment',
         '/pending-assignments',
+        '/my-list',
         '/register',
         '/login']
 
     const navMenus = [
-        'Home',
+        'Assignment Guru',
         'Assignments',
         'Create Assignment',
         'Pending Assignments',

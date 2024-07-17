@@ -31,14 +31,13 @@ const ViewAssignment = () => {
                                 <p className='font-semibold py-3 px-4 text-justify shadow-lg border-2 rounded-md'>{assignment.description}</p>
                                 </div>
                                 <div className='flex border-b-2 py-3 justify-between'>
-                                    <span className='badge badge-info px-20 py-4 text-white font-semibold'>Difficulty : {assignment.difficulty.toUpperCase()}</span>
-                                    <span className='badge badge-secondary px-20 py-4 text-white font-semibold'>Marks : {assignment.marks.toUpperCase()}</span>
+                                    <span className=' px-20 py-4 bg-slate-100 text-red-700 border-2 shadow-lg font-semibold'>Difficulty : {assignment.difficulty.toUpperCase()}</span>
+                                    <span className=' px-20 py-4 bg-slate-100 text-red-700 border-2 shadow-lg font-semibold'>Marks : {assignment.marks.toUpperCase()}</span>
                                 </div>
                                 {
-                                    user && <div className='flex border-2 py-2 px-2 justify-between'>
+                                    user && <div className='flex border-2 shadow-xl py-2 px-2 justify-center'>
                                         <Link to={'/submit-assignment/'+assignment?._id} className='btn btn-success text-white w-40 '>Take Assignment</Link>
-                                        <button className='btn btn-primary '>Update</button>
-                                        <button className='btn btn-warning text-white'>Delete</button>
+
                                         <div className='flex justify-center gap-10'>
                                 </div>
                                     </div>

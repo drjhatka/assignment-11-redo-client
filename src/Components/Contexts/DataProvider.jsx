@@ -9,6 +9,7 @@ const DataProvider = ({children}) => {
     axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
     
     const [assignmentData, setAssignmentData] = useState(null) 
+    const [submissionData, setSubmissionData] = useState(null) 
     const { data, isLoading } = useQuery({
         queryKey: ['assignments', setAssignmentData],
         queryFn: async () => {
@@ -22,8 +23,23 @@ const DataProvider = ({children}) => {
         }
 
     })
+    const { data:submissions, isLoading:submissionLoading } = useQuery({
+        queryKey: ['submissions', setSubmissionData],
+        queryFn: async () => {
+            const result = await axios.get('/submissions')
+            setSubmissionData(result.data)
+            //console.log('Assignments ', result.data)
+            return result.data;
+        },
+        onSuccess:()=>{
+
+        }
+
+    })
+    
     const dataInfo = {
         assignmentData,
+        submissionData,
         isLoading,
         setAssignmentData
     }

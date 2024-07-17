@@ -18,6 +18,7 @@ import Register from './Components/Auth/Register.jsx'
 import PendingAssignments from './Components/Assignments/PendingAssignments.jsx'
 import SubmissionForm from './Components/Submission/SubmissionForm.jsx'
 import Submission from './Components/Assignments/Submission.jsx'
+import SubmissionList from './Components/Submission/SubmissionList.jsx'
 
 
 const queryClient = new QueryClient()
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path:'/pending-assignments',
         element:<PendingAssignments></PendingAssignments>
+      },
+      {
+        path:'/my-list',
+        element:<SubmissionList/>
       },
       {
         path:'/submit-assignment/:id',
