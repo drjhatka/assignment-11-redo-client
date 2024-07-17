@@ -32,7 +32,7 @@ const Submission = () => {
       
         const submission ={title,description,marks,dueDate,imageUrl,difficulty, assignmentId:_id, status:'Completed',marksGiven:0, pdfLink:event.target.pdfLink.value, note:event.target.note.value, userEmail:user.email, userName:user.displayName}
         //check if submission exists for this user
-        console.log(submissionData.filter(sub=>sub.assignmentId==assignment._id))
+        //console.log(submissionData.filter(sub=>sub.assignmentId==assignment._id))
         if(submissionData.filter(sub=>sub.assignmentId==assignment._id).length>0){
             Alert('Error','You already submitted this assignment')
         }

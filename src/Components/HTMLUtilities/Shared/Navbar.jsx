@@ -54,7 +54,7 @@ const changeTheme =(theme, setTheme)=>{
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                   {
                     navMenus.map((menu, index) => {
-                      if (user && index > 0 && index < 3) {
+                      if (user && index > 0 && index < 5) {
                         return <li key={Math.random() * 1000}><Link to={uriList[index]}> {navMenus[index]}</Link></li>
 
                       }
@@ -70,12 +70,12 @@ const changeTheme =(theme, setTheme)=>{
                 {
                   navMenus.map((menu, index) => {
                     if (user) {
-                      while (index < 4) {
+                      while (index < 5) {
                         return <li className='shadow-lg h-full hover:bg-emerald-200 text-center text-sm border-2 mr-2 rounded-md bg-slate-50' key={Math.random() * 1000}><Link to={uriList[index]}> {navMenus[index]}</Link></li>
                       }
                     }
                     else {
-                      if (index !== 2 && index !== 3) {
+                      if (index !== 2 && index !=4 && index !== 3) {
                         return <li className='shadow-lg h-full hover:bg-emerald-200 text-center text-sm border-2 mr-2 rounded-md bg-slate-50' key={Math.random() * 1000}><Link to={uriList[index]}> {navMenus[index]}</Link></li>
                       }
                     }

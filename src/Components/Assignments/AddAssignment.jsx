@@ -4,8 +4,11 @@ import { AuthContext } from '../Contexts/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import {Alert} from '../HTMLUtilities/Alerts/Alert';
+import { ChangeTitle } from '../HTMLUtilities/Title/DocTitle';
 
 const AddAssignment = () => {
+    ChangeTitle('Add Assignment')
+
     const {user} = useContext(AuthContext)
     const submitHandler = ()=>{
         event.preventDefault()
@@ -26,6 +29,7 @@ const AddAssignment = () => {
                     difficulty:fields[4],
                     dueDate:fields[5],
                     status:'Pending',
+                    marksGiven:0,
                     userName:user.displayName,
                     userEmail:user?.email,
                     userPhotoUrl: user.photoURL ? user.photoURL:'default url'
@@ -34,8 +38,8 @@ const AddAssignment = () => {
                 Alert('Success','Assignment Created Successfully','success')
             ).
                 catch(error=>{
-                Alert('Success',error.message,'success')
-                    console.log(error)
+                Alert('Error',error.message,'error')
+                
                 })
     }
     return (

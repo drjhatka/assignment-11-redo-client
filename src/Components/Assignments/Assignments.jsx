@@ -4,8 +4,11 @@ import AssignmentCard from './AssignmentCard';
 import Title from '../HTMLUtilities/Title/Title';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
+import { ChangeTitle } from '../HTMLUtilities/Title/DocTitle';
 
 const Assignments = () => {
+    ChangeTitle('All Assignments')
+
     const queryClient = useQueryClient()
     //const {data, isLoading} = useContext(DataContext)
     const [loadedData, setLoadedData] = useState()
@@ -24,7 +27,7 @@ const Assignments = () => {
         mutationFn:async(difficulty)=>{
             const result = await axios.post('/filtered-assignments',{difficulty:difficulty})
             setLoadedData(result.data)
-            console.log(result.data)
+           // console.log(result.data)
             //return result.data
         }
     })
@@ -32,7 +35,7 @@ const Assignments = () => {
 
    
     const handleFilter =()=>{   
-        console.log(event.target.value)
+        //console.log(event.target.value)
         const difficulty = event.target.value
         if(difficulty=='all'){
             setLoadedData(data)

@@ -12,7 +12,7 @@ const Register = () => {
     const doRegister = () => {
         event.preventDefault()
         const validate = validateInput(event?.target.email.value, event?.target.password.value)
-        console.log(validate)
+        //console.log(validate)
         if (validate) {
             doNativeRegister(
                 event?.target.name.value,

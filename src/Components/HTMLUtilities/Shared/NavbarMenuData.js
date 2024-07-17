@@ -10,10 +10,11 @@ export const NavbarMenuData = () => {
         '/login']
 
     const navMenus = [
-        'Assignment Guru',
+        'Home',
         'Assignments',
         'Create Assignment',
         'Pending Assignments',
+        'My List',
         'Register',
         'Login']
 
