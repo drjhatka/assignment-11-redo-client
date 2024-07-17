@@ -8,14 +8,15 @@ const Slider = ({slides}) => {
             <Carousel 
                 additionalTransfrom={0}
                 arrows
-                autoPlaySpeed={1000}
+                autoPlay={true}
+                autoPlaySpeed={1500}
                 centerMode={false}
                 className='shadow-lg border-2 max-h-96 mt-4  rounded-lg'
                 containerClass="container"
                 dotListClass=""
                 draggable
                 focusOnSelect={false}
-                infinite
+                infinite ={true}
                 itemClass=" "
                 keyBoardControl
                 minimumTouchDrag={80}
