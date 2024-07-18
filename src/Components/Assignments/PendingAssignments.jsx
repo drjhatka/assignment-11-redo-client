@@ -7,7 +7,7 @@ import { AuthContext } from '../Contexts/AuthProvider';
 
 const PendingAssignments = () => {
     const {user} = useContext(AuthContext)
-    const {assignmentData:assignments, submissionData:submissions, isLoading} = useContext(DataContext)
+    const {assignmentData:assignments, submissionData, isLoading} = useContext(DataContext)
     ChangeTitle('Pending Assignments')
     
     //console.log(assignments)
@@ -17,7 +17,7 @@ const PendingAssignments = () => {
                 {/* submissions.length==0 ?<h1 className='text-4xl text-red-600 text-center py-7'>No Data To Show</h1>
              */}
              {
-                 !isLoading &&  submissions?.filter(submission=>submission.status=='Pending' && submission.userEmail==user?.email).map((assignment, index)=>{
+                 !isLoading &&  submissionData?.filter(submission=>submission.status=='Pending' && submission.userEmail==user?.email).map((assignment, index)=>{
                      return <PendingCard key={index} assignment={assignment}></PendingCard>
                  })
              }

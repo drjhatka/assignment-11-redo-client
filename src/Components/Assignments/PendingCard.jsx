@@ -114,7 +114,7 @@ const PendingCard = ({assignment}) => {
                         </div>
                         }
                         {
-                            submissionData?.filter(subm=>subm.userEmail==user.email)[0]?.marksGiven!=0 && <h1>Marks Obtained: submissionData?.filter(subm=>subm.userEmail==user.email)[0]?.marksGiven </h1>
+                            submissionData?.filter(subm=>subm.userEmail==user.email)[0]?.marksGiven!=0 && <h1>Marks Obtained: {submissionData?.filter(subm=>subm.userEmail==user.email)[0]?.marksGiven} </h1>
                         }
 
                     </div>
