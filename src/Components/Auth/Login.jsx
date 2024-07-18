@@ -5,13 +5,14 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import {Alert} from '../HTMLUtilities/Alerts/Alert';
 import { validateInput } from '../HTMLUtilities/Auth/LoginValidation';
+import axios from 'axios';
 
 const Login = () => {
     const {doNativeLogin, user, doExternalLogin, setUser} = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider()
     const navigate = useNavigate()
     
-    const loginHandler =()=>{
+    const loginHandler =async()=>{
         const email =event.target.email.value
         const password = event.target.password.value
 
@@ -19,15 +20,18 @@ const Login = () => {
         if(validateInput(email, password) ){
         //...Do password based login
             doNativeLogin(email, password).
-            then(user=>{
-                setUser(user) 
-                Alert('Success','Login Success','success')
-                navigate('/',{replace:true})
+            then(userCred=>{
+                console.log('Cred ',userCred)
+                setUser(userCred) 
+            //create JWT token on the server
+                Alert('Success','Login Success','success')      
             }).
             catch(error =>{
                 Alert('Login Error',error.message,'error')
             })
-            //create JWT token on the server
+            axios.post('/jwt',{userEmail:email}, {withCredentials:true}).then(res=>console.log('res tok ',res))
+
+            navigate('/',{replace:true})
             //if(location.state){ navigate(location.state)}           
     }
     else{

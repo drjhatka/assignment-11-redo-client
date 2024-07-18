@@ -29,7 +29,6 @@ const AuthProvider = ({children}) => {
 
     const doNativeLogin = async(email, password) => {
             return signInWithEmailAndPassword(auth, email, password).then(()=>setLoading(false))
-
         }
     const doExternalLogin = async ( provider) => {
         return signInWithPopup(auth,provider)

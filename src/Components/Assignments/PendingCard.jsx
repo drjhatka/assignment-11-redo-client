@@ -104,7 +104,6 @@ const PendingCard = ({assignment}) => {
                             submissionData?.filter(subm=>subm.userEmail==user.email)?.length>0 && 
                             submissionData?.filter(subm=>subm.userEmail==user.email)[0]?.marksGiven==0 && 
                             
-                                //  marksGiven && <div>Marks Obtained: {submissionData?.filter(subm=>subm.marksGiven>0)[0].marksGiven}</div>
                             
                             <div className='grid gap-4'>
                             <form className='flex flex-col gap-4' onSubmit={handleGiveMark}>
