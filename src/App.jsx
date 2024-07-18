@@ -5,6 +5,7 @@ import './App.css'
 import Navbar from './Components/HTMLUtilities/Shared/Navbar'
 import { Outlet } from 'react-router-dom'
 import {NavbarMenuData} from './Components/HTMLUtilities/Shared/NavbarMenuData'
+import Footer from './Components/HTMLUtilities/Shared/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,6 +14,7 @@ function App() {
     <>
       <Navbar navMenus={navMenus} uriList={uriList} loginHandler={null} searchHandler={null} ></Navbar>
       <Outlet></Outlet>
+      <Footer></Footer>
     </>
   )
 }

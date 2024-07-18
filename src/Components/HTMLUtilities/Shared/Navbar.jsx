@@ -4,6 +4,8 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 import { DataContext } from '../../Contexts/DataProvider';
 import LottieAnimation from '../Animations/LottieAnimation';
 import { ThemeContext } from '../../Contexts/ThemeProvider';
+import { PiBooksThin } from "react-icons/pi";
+
 
 const Navbar = ({ navMenus, uriList, logOutHandler, searchHandler }) => {
   const {theme, setTheme} = useContext(ThemeContext)
@@ -63,7 +65,7 @@ const changeTheme =(theme, setTheme)=>{
                   }
                 </ul>
               </div>
-              <Link className="btn btn-ghost text-xl" to={uriList[0]}> {navMenus[0]}</Link>
+              <Link className="btn btn-ghost text-xl" to={uriList[0]}><PiBooksThin className='text-4xl text-red-700 shadow-xl'></PiBooksThin> <h1 className='hidden md:block'> Assignment Guru</h1></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
               <ul className="menu text-blue-900 font-semibold  menu-horizontal px-1">

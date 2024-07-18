@@ -65,7 +65,7 @@ const UpdateAssignment = () => {
             <SubmissionForm fieldNameList={['title', 'description', 'marks', 'imageUrl', 'difficulty', 'dueDate', 'status',]}
                 fieldTypeList={['text', 'text', 'text', 'text', 'text', 'date', 'text']}
                 defaultValues={[assignment.title, assignment.description, assignment.marks, assignment.imageUrl, assignment.difficulty, assignment.dueDate, assignment.status]}
-                AddUpdate={'Update'} submitHandler={updateHandler}></SubmissionForm>
+                AddUpdate={'Update'} submitHandler={updateHandler} update={true}></SubmissionForm>
         </div>
     );
 };

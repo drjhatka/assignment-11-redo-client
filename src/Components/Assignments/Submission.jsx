@@ -30,7 +30,7 @@ const Submission = () => {
         event.preventDefault()
         const {_id,title, description, marks,dueDate,imageUrl,difficulty} = assignment
       
-        const submission ={title,description,marks,dueDate,imageUrl,difficulty, assignmentId:_id, status:'Completed',marksGiven:0, pdfLink:event.target.pdfLink.value, note:event.target.note.value, userEmail:user.email, userName:user.displayName}
+        const submission ={title,description,marks,dueDate,imageUrl,difficulty, assignmentId:_id, status:'Pending',marksGiven:0, pdfLink:event.target.pdfLink.value, note:event.target.note.value, userEmail:user.email, userName:user.displayName}
         //check if submission exists for this user
         //console.log(submissionData.filter(sub=>sub.assignmentId==assignment._id))
         if(submissionData.filter(sub=>sub.assignmentId==assignment._id).length>0){

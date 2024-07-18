@@ -9,19 +9,19 @@ const CrudForm = ({fieldNameList, fieldTypeList, colSpan, AddUpdate, submitHandl
             <div>
                 <h1 className='w-full text-red-400 font-bold py-4 shadow-lg bg-slate-50 text-center mt-4'>{AddUpdate}</h1>
             </div>
-            <form onSubmit={submitHandler} className='grid   px-10 mt-5 md:grid-cols-2 gap-4'>
+            <form onSubmit={submitHandler} className='flex flex-col gap-4   px-10 mt-5 md:grid md:grid-cols-2 '>
                 {
                     fieldNameList.map((field, index)=>{
                         if (index==0){
-                            return  <div key={index} className='col-span-2 bg-slate-100 flex  px-6 rounded-lg border-2 py-8 '>
+                            return  <div key={index} className=' md:col-span-2 bg-slate-100 flex  px-6 rounded-lg border-2 py-8 '>
                                 <h1 className='font-bold text-red-700 text-center py-2 min-w-40 border-2 shadow-2xl'>{fieldNameList[index].charAt(0).toUpperCase()+fieldNameList[index].slice(1)}</h1>
 
                                 <Input type={fieldTypeList[index]} name={fieldNameList[index]}></Input>
                         </div>
                         }
                         else if(index==1){
-                           return  <div key={index} className='col-span-2 bg-slate-100 py-4   px-2 rounded-lg  '>
-                                <h1 className='font-bold text-red-700 text-center  min-w-40  shadow-2xl'>{fieldNameList[index].charAt(0).toUpperCase()+fieldNameList[index].slice(1)}</h1>
+                           return  <div key={index} className='col-span-1 md:col-span-2 bg-slate-100 py-4   px-2 rounded-lg  '>
+                                <h1 className='font-bold text-red-700 text-center  md:min-w-40  shadow-2xl'>{fieldNameList[index].charAt(0).toUpperCase()+fieldNameList[index].slice(1)}</h1>
                                     
                                     <TextArea name={fieldNameList[index]} rowSpan={3}></TextArea>
                                 </div>
@@ -35,7 +35,7 @@ const CrudForm = ({fieldNameList, fieldTypeList, colSpan, AddUpdate, submitHandl
                         }
                         else{
                                 return <div key={index} className={'bg-slate-100 border-green-700 py-2 col-span-1 shadow-lg rounded-md ml-4 flex gap-5 px-6 items-center '}>
-                                <h1 className='font-bold min-w-40 text-red-600'>{fieldNameList[index].charAt(0).toUpperCase()+fieldNameList[index].slice(1)}</h1>
+                                <h1 className='font-bold md:min-w-40 text-red-600'>{fieldNameList[index].charAt(0).toUpperCase()+fieldNameList[index].slice(1)}</h1>
                                 <Input type={fieldTypeList[index]} name={fieldNameList[index]} ></Input>
 
                     </div>

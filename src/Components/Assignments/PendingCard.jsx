@@ -1,14 +1,19 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../Contexts/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaRegEdit } from 'react-icons/fa';
 import { TiDeleteOutline } from 'react-icons/ti';
+import { DataContext } from '../Contexts/DataProvider';
+import { Alert } from '../HTMLUtilities/Alerts/Alert';
 
 const PendingCard = ({assignment}) => {
+    const [marksGiven, setMarksGiven] = useState('false')
     const {user} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const {submissionData} = useContext(DataContext)
     const queryClient = useQueryClient()
     const {_id,title, description,status, marks,imageUrl,difficulty, userName, userEmail, userPhotoUrl}= assignment
     const {mutate} = useMutation({
@@ -18,38 +23,52 @@ const PendingCard = ({assignment}) => {
             return result.data
         }
     })
-    const deleteHandler = ()=>{
-        //show confirmation
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-          }).then((result) => {
-            if (result.isConfirmed) {
-                //check user 
-                if(assignment.userEmail==user.email){
-                    mutate(assignment._id)
-                    queryClient.invalidateQueries(['assignments'])
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your assignment was deleted!.",
-                        icon: "success"
-                      });
-                }
-                else{
-                    Swal.fire({
-                      title: "Error!",
-                      text: "Your cannot delete other user assignments!.",
-                      icon: "error"
-                    });
-                }
-            }
-          });
+    
+    // const deleteHandler = ()=>{
+    //     //show confirmation
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "You won't be able to revert this!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, delete it!"
+    //       }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             //check user 
+    //             if(assignment.userEmail==user.email){
+    //                 mutate(assignment._id)
+    //                 queryClient.invalidateQueries(['assignments'])
+    //                 Swal.fire({
+    //                     title: "Deleted!",
+    //                     text: "Your assignment was deleted!.",
+    //                     icon: "success"
+    //                   });
+    //             }
+    //             else{
+    //                 Swal.fire({
+    //                   title: "Error!",
+    //                   text: "Your cannot delete other user assignments!.",
+    //                   icon: "error"
+    //                 });
+    //             }
+    //         }
+    //       });
           
+    // }
+    const handleGiveMark = ()=>{
+        event.preventDefault()
+        const form = event.target
+        const mark = form.mark.value
+        const remark = form.remark.value
+        const status = 'Completed'
+        const values = {mark, remark, status}
+        console.log(assignment)
+        axios.patch('/give-mark/'+assignment._id,values).then(data=>console.log(data))
+        Alert('success', 'Marks Given Successfully', 'success')
+        setMarksGiven(true)
+        navigate('/assignments')
     }
 
     return (
@@ -81,12 +100,24 @@ const PendingCard = ({assignment}) => {
                     } */}
 
                     <div className='flex gap-5'>
-                        <div className='grid gap-4'>
-                            <input type="text" placeholder='Enter mark' className='input w-full input-bordered border-2 border-green-600' />
-                            <input type="text" placeholder='Enter Remark' className='input w-full input-bordered border-2 border-green-600' />
-                            <button className='btn btn-info text-white'>Give Mark</button>
-
+                        {
+                            submissionData?.filter(subm=>subm.userEmail==user.email)?.length>0 && 
+                            submissionData?.filter(subm=>subm.userEmail==user.email)[0]?.marksGiven==0 && 
+                            
+                                //  marksGiven && <div>Marks Obtained: {submissionData?.filter(subm=>subm.marksGiven>0)[0].marksGiven}</div>
+                            
+                            <div className='grid gap-4'>
+                            <form className='flex flex-col gap-4' onSubmit={handleGiveMark}>
+                            <input required name='mark' type="text" placeholder='Enter mark' className='input w-full input-bordered border-2 border-green-600' />
+                            <input required name='remark' type="text" placeholder='Enter Remark' className='input w-full input-bordered border-2 border-green-600' />
+                            <button type='submit' className='btn btn-info text-white'>Give Mark</button>
+                            </form>
                         </div>
+                        }
+                        {
+                            submissionData?.filter(subm=>subm.userEmail==user.email)[0]?.marksGiven!=0 && <h1>Marks Obtained: submissionData?.filter(subm=>subm.userEmail==user.email)[0]?.marksGiven </h1>
+                        }
+
                     </div>
                 </div>
             </div>

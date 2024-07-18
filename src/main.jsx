@@ -47,19 +47,19 @@ const router = createBrowserRouter([
       },
       {
         path:'/update-assignment/:id',
-        element:<UpdateAssignment></UpdateAssignment>
+        element:<PrivateRoute><UpdateAssignment></UpdateAssignment></PrivateRoute>
       },
       {
         path:'/pending-assignments',
-        element:<PendingAssignments></PendingAssignments>
+        element:<PrivateRoute><PendingAssignments></PendingAssignments></PrivateRoute>
       },
       {
         path:'/my-list',
-        element:<SubmissionList/>
+        element:<PrivateRoute><SubmissionList/></PrivateRoute>
       },
       {
         path:'/submit-assignment/:id',
-        element:<Submission/>
+        element:<PrivateRoute><Submission/></PrivateRoute>
       },
       {
         path:'/login',
