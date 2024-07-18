@@ -42,7 +42,7 @@ const Login = () => {
 }
     const externalLogin =()=>{
         doExternalLogin(googleProvider).then((userCredentials)=>{
-            setUser(userCredentials.user)
+            //setUser(userCredentials.user)
         }).catch(error=>{
             Alert('Error', error.message, 'error')
         })

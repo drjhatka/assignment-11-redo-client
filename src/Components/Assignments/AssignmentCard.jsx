@@ -16,7 +16,7 @@ const AssignmentCard = ({assignment}) => {
     const {mutate} = useMutation({
         mutationKey:['delete-assignment'],
         mutationFn: async (id)=>{
-            const result = axios.delete('/delete-assignment/'+id)
+            const result = axios.delete('/delete-assignment/'+id,{withCredentials:true})
             return result.data
         }
     })

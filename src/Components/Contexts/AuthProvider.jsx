@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile, onAuthStateChanged, signOut } from "firebase/auth";
 import app from '../firebase.config';
+import axios from 'axios';
 
 export const AuthContext = createContext({})
 const AuthProvider = ({children}) => {
@@ -31,14 +32,21 @@ const AuthProvider = ({children}) => {
             return signInWithEmailAndPassword(auth, email, password).then(()=>setLoading(false))
         }
     const doExternalLogin = async ( provider) => {
-        return signInWithPopup(auth,provider)
+        //set user token as jwt token
+        return signInWithPopup(auth,provider).then(user=>{
+            console.log('Token G ',user.user.email)
+            axios.post('/jwt',{userEmail:user.user.email}, {withCredentials:true})
+        })
     }
 
     const doLogout = async ()=>{
+        //clear cookies
+        axios.post('/logout', {},{withCredentials:true}).then((data)=>console.log(data))
         return signOut(auth).then(()=>setLoading(false))
     }
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
+            
                 setUser(currentUser)
                 setLoading(false)            
         })

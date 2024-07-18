@@ -13,7 +13,7 @@ const DataProvider = ({children}) => {
     const { data, isLoading } = useQuery({
         queryKey: ['assignments', setAssignmentData],
         queryFn: async () => {
-            const result = await axios.get('/assignments')
+            const result = await axios.get('/assignments',{withCredentials:true})
             setAssignmentData(result.data)
             //console.log('Assignments ', result.data)
             return result.data;
@@ -26,7 +26,7 @@ const DataProvider = ({children}) => {
     const { data:submissions, isLoading:submissionLoading } = useQuery({
         queryKey: ['submissions', setSubmissionData],
         queryFn: async () => {
-            const result = await axios.get('/submissions')
+            const result = await axios.get('/submissions',{withCredentials:true})
             setSubmissionData(result.data)
             //console.log('Assignments ', result.data)
             return result.data;

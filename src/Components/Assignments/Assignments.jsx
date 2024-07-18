@@ -16,7 +16,7 @@ const Assignments = () => {
     const {data, isLoading} = useQuery({
         queryKey:['fiters', setLoadedData],
         queryFn:async()=>{
-            const result =await axios.get('/assignments')
+            const result =await axios.get('/assignments',{withCredentials:true})
             setLoadedData(result.data)
             return result.data
         }
@@ -25,7 +25,7 @@ const Assignments = () => {
     const {mutate} =useMutation({
         mutationKey:['filter-assignments', setLoadedData],
         mutationFn:async(difficulty)=>{
-            const result = await axios.post('/filtered-assignments',{difficulty:difficulty})
+            const result = await axios.post('/filtered-assignments',{difficulty:difficulty},{withCredentials:true})
             setLoadedData(result.data)
            // console.log(result.data)
             //return result.data

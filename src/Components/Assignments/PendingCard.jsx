@@ -19,7 +19,7 @@ const PendingCard = ({assignment}) => {
     const {mutate} = useMutation({
         mutationKey:['delete-assignment'],
         mutationFn: async (id)=>{
-            const result = axios.delete('/delete-assignment/'+id)
+            const result = axios.delete('/delete-assignment/'+id,{withCredentials:true})
             return result.data
         }
     })
@@ -65,7 +65,7 @@ const PendingCard = ({assignment}) => {
         const status = 'Completed'
         const values = {mark, remark, status}
         console.log(assignment)
-        axios.patch('/give-mark/'+assignment._id,values).then(data=>console.log(data))
+        axios.patch('/give-mark/'+assignment._id,values, {withCredentials:true}).then(data=>console.log(data))
         Alert('success', 'Marks Given Successfully', 'success')
         setMarksGiven(true)
         navigate('/assignments')

@@ -18,7 +18,7 @@ const UpdateAssignment = () => {
         mutationKey: ['update-assignment'],
         mutationFn: async (variables) => {
             console.log('ID==> ',variables.id)
-            const result = await axios.patch('/update-assignment/' + variables.id, variables.assignment)
+            const result = await axios.patch('/update-assignment/' + variables.id, variables.assignment, {withCredentials:true})
             console.log()
             return result.data
         },

@@ -34,7 +34,7 @@ const AddAssignment = () => {
                     userEmail:user?.email,
                     userPhotoUrl: user.photoURL ? user.photoURL:'default url'
                 }
-            axios.post('/create-assignment/', assignment).then(
+            axios.post('/create-assignment/', assignment, {withCredentials:true}).then(
                 Alert('Success','Assignment Created Successfully','success')
             ).
                 catch(error=>{
