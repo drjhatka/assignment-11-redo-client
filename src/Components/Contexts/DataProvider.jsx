@@ -28,7 +28,6 @@ const DataProvider = ({children}) => {
         queryFn: async () => {
             const result = await axios.get('/submissions',{withCredentials:true})
             setSubmissionData(result.data)
-            //console.log('Assignments ', result.data)
             return result.data;
         },
         onSuccess:()=>{
@@ -44,7 +43,6 @@ const DataProvider = ({children}) => {
         setAssignmentData
     }
     
-    //console.log('Provider Data ',assignmentData)
     return <DataContext.Provider value={ dataInfo }>
         {children}
     </DataContext.Provider>

@@ -20,6 +20,7 @@ import SubmissionForm from './Components/Submission/SubmissionForm.jsx'
 import Submission from './Components/Assignments/Submission.jsx'
 import SubmissionList from './Components/Submission/SubmissionList.jsx'
 import UpdateAssignment from './Components/Assignments/UpdateAssignment.jsx'
+import ErrorPage from './Components/HTMLUtilities/Error/ErrorPage.jsx'
 
 
 const queryClient = new QueryClient()
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    // errorElement:<ErrorPage/>,
+    errorElement:<ErrorPage/>,
     children: [
       {
         path: '/',

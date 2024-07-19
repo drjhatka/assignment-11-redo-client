@@ -5,8 +5,10 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import {Alert} from '../HTMLUtilities/Alerts/Alert';
 import { ChangeTitle } from '../HTMLUtilities/Title/DocTitle';
+import { useQueryClient } from '@tanstack/react-query';
 
 const AddAssignment = () => {
+    const queryClient = useQueryClient()
     ChangeTitle('Add Assignment')
 
     const {user} = useContext(AuthContext)
@@ -34,8 +36,10 @@ const AddAssignment = () => {
                     userEmail:user?.email,
                     userPhotoUrl: user.photoURL ? user.photoURL:'default url'
                 }
-            axios.post('/create-assignment/', assignment, {withCredentials:true}).then(
+            axios.post('/create-assignment/', assignment, {withCredentials:true}).then(()=>{
                 Alert('Success','Assignment Created Successfully','success')
+                queryClient.invalidateQueries(['assignments'])
+                }
             ).
                 catch(error=>{
                 Alert('Error',error.message,'error')

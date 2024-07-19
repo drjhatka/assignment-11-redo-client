@@ -5,6 +5,7 @@ import Title from '../HTMLUtilities/Title/Title';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { ChangeTitle } from '../HTMLUtilities/Title/DocTitle';
+import LottieAnimation from '../HTMLUtilities/Animations/LottieAnimation';
 
 const Assignments = () => {
     ChangeTitle('All Assignments')
@@ -65,7 +66,7 @@ const Assignments = () => {
             </div>
             <div className='lg:w-[90%] md:gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto mt-4'>
                 {
-                    isLoading ? <h1>Loading...</h1>:  loadedData?.map((assignment, index) => {
+                    isLoading ? <LottieAnimation/>:  loadedData?.map((assignment, index) => {
                         return <AssignmentCard key={index} assignment={assignment}></AssignmentCard>
                     })
                 }

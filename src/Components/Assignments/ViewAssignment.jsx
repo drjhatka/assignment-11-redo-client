@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { DataContext } from '../Contexts/DataProvider';
 import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
+import LottieAnimation from '../HTMLUtilities/Animations/LottieAnimation';
 
 const ViewAssignment = () => {
     const { assignmentData, isLoading } = useContext(DataContext)
@@ -14,7 +15,7 @@ const ViewAssignment = () => {
     return (
         <div>
             {
-                isLoading ? <h1>Loading....</h1> :
+                isLoading ? <LottieAnimation/>:
                     assignmentData.filter(assignment => assignment._id == id).map((assignment, index) => {
 
                         //console.log('---< ',assignmentData)

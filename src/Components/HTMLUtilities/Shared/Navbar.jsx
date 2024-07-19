@@ -10,7 +10,6 @@ import { PiBooksThin } from "react-icons/pi";
 const Navbar = ({ navMenus, uriList, logOutHandler, searchHandler }) => {
   const {theme, setTheme} = useContext(ThemeContext)
   const { user, loading, doLogout } = useContext(AuthContext)
-  console.log('theme', theme)
   const navigate = useNavigate()
   const logOut = () => {
     doLogout()
@@ -33,7 +32,7 @@ const changeTheme =(theme, setTheme)=>{
   return (
     <div>
       {
-        loading ? <LottieAnimation /> :
+        loading ? <div className='w-30'> <LottieAnimation /> </div>:
           <div className="navbar bg-slate-200 shadow-lg" id='navbar'>
             <div className="navbar-start">
               <div className="dropdown">

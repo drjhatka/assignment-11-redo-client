@@ -10,11 +10,10 @@ import { DataContext } from '../Contexts/DataProvider';
 import { Alert } from '../HTMLUtilities/Alerts/Alert';
 
 const PendingCard = ({assignment}) => {
-    const [marksGiven, setMarksGiven] = useState('false')
     const {user} = useContext(AuthContext)
-    const navigate = useNavigate()
-    const {submissionData} = useContext(DataContext)
     const queryClient = useQueryClient()
+    const navigate = useNavigate()
+    const {submissionData, assignmentData} = useContext(DataContext)
     const {_id,title, description,status, marks,imageUrl,difficulty, userName, userEmail, userPhotoUrl}= assignment
     const {mutate} = useMutation({
         mutationKey:['delete-assignment'],
@@ -24,39 +23,6 @@ const PendingCard = ({assignment}) => {
         }
     })
     
-    // const deleteHandler = ()=>{
-    //     //show confirmation
-    //     Swal.fire({
-    //         title: "Are you sure?",
-    //         text: "You won't be able to revert this!",
-    //         icon: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#3085d6",
-    //         cancelButtonColor: "#d33",
-    //         confirmButtonText: "Yes, delete it!"
-    //       }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             //check user 
-    //             if(assignment.userEmail==user.email){
-    //                 mutate(assignment._id)
-    //                 queryClient.invalidateQueries(['assignments'])
-    //                 Swal.fire({
-    //                     title: "Deleted!",
-    //                     text: "Your assignment was deleted!.",
-    //                     icon: "success"
-    //                   });
-    //             }
-    //             else{
-    //                 Swal.fire({
-    //                   title: "Error!",
-    //                   text: "Your cannot delete other user assignments!.",
-    //                   icon: "error"
-    //                 });
-    //             }
-    //         }
-    //       });
-          
-    // }
     const handleGiveMark = ()=>{
         event.preventDefault()
         const form = event.target
@@ -64,16 +30,19 @@ const PendingCard = ({assignment}) => {
         const remark = form.remark.value
         const status = 'Completed'
         const values = {mark, remark, status}
-        console.log(assignment)
-        axios.patch('/give-mark/'+assignment._id,values, {withCredentials:true}).then(data=>console.log(data))
+        console.log('ass', assignment)
+        axios.patch('/give-mark/'+assignment._id,values, {withCredentials:true}).then(()=>{
+            queryClient.invalidateQueries(['submissions'])
+        })
+
         Alert('success', 'Marks Given Successfully', 'success')
-        setMarksGiven(true)
         navigate('/assignments')
     }
-
+console.log('id','Filter ',_id,submissionData?.filter(subm=>(console.log(subm.assignmentId==_id))))
     return (
         <div>
         <div className="card bg-base-100 shadow-xl border-2">
+          
             <figure className='h-44'>
                 <img
                 className='cover '
@@ -101,10 +70,9 @@ const PendingCard = ({assignment}) => {
 
                     <div className='flex gap-5'>
                         {
-                            submissionData?.filter(subm=>subm.userEmail==user.email)?.length>0 && 
-                            submissionData?.filter(subm=>subm.userEmail==user.email)[0]?.marksGiven==0 && 
                             
-                            
+                            submissionData?.filter(subm=>subm.userEmail==user.email )?.length>0 && 
+                            submissionData?.filter(subm=>subm.marksGiven==0 ) &&                              
                             <div className='grid gap-4'>
                             <form className='flex flex-col gap-4' onSubmit={handleGiveMark}>
                             <input required name='mark' type="text" placeholder='Enter mark' className='input w-full input-bordered border-2 border-green-600' />
@@ -114,7 +82,7 @@ const PendingCard = ({assignment}) => {
                         </div>
                         }
                         {
-                            submissionData?.filter(subm=>subm.userEmail==user.email)[0]?.marksGiven!=0 && <h1>Marks Obtained: {submissionData?.filter(subm=>subm.userEmail==user.email)[0]?.marksGiven} </h1>
+
                         }
 
                     </div>

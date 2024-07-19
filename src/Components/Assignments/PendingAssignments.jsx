@@ -9,8 +9,7 @@ const PendingAssignments = () => {
     const {user} = useContext(AuthContext)
     const {assignmentData:assignments, submissionData, isLoading} = useContext(DataContext)
     ChangeTitle('Pending Assignments')
-    
-    //console.log(assignments)
+    console.log('sb data',submissionData)
      return (
          <div className='lg:w-[90%] md:gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto mt-4'>
             
