@@ -47,17 +47,17 @@
 git clone https://github.com/yourusername/assignment-guru.git
 ```
 ## 🌟 Why Assignment Guru?
-For Students, By Students - Built by assignment warriors who understand the struggle
+**For Students, By Students - Built by assignment warriors who understand the struggle**
 
-Community-Powered - Collective intelligence beats solo grinding
+**Community-Powered - Collective intelligence beats solo grinding**
 
-Beyond Grades - We focus on actual learning and knowledge sharing
+**Beyond Grades - We focus on actual learning and knowledge sharing**
 
-📈 Future Roadmap
-Mobile App (React Native)
+## 📈 Future Roadmap
+**Mobile App (React Native)**
 
-AI Assignment Assistant
+**AI Assignment Assistant**
 
-Plagiarism Checker
+**Plagiarism Checker**
 
-Video Solution Platform
+**Video Solution Platform**
