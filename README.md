@@ -45,7 +45,7 @@
 1. Clone the repo:
 ```bash
 git clone https://github.com/yourusername/assignment-guru.git
-
+```
 ## 🌟 Why Assignment Guru?
 For Students, By Students - Built by assignment warriors who understand the struggle
 
