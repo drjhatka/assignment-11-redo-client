@@ -1,6 +1,6 @@
 # Assignment Guru 🚀
 
-![Project Banner](https://via.placeholder.com/1200x400?text=Assignment+Guru+Banner)  
+![Project Banner](https://i.ibb.co/hRSJ7FTX/pngtree-assignment-icon-for-your-design-websites-and-projects-png-image-1878159.jpg)  
 *Time to work smarter not harder for your assignments!*
 
 [![Live Site](https://img.shields.io/badge/Live_Site-Click_Here-blue?style=for-the-badge&logo=vercel)](https://your-live-site-url.com)
