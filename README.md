@@ -45,3 +45,19 @@
 1. Clone the repo:
 ```bash
 git clone https://github.com/yourusername/assignment-guru.git
+
+## 🌟 Why Assignment Guru?
+For Students, By Students - Built by assignment warriors who understand the struggle
+
+Community-Powered - Collective intelligence beats solo grinding
+
+Beyond Grades - We focus on actual learning and knowledge sharing
+
+📈 Future Roadmap
+Mobile App (React Native)
+
+AI Assignment Assistant
+
+Plagiarism Checker
+
+Video Solution Platform
