@@ -1,5 +1,5 @@
 # Assignment Guru 🚀
-
+<img src="https://i.ibb.co/hRSJ7FTX/pngtree-assignment-icon-for-your-design-websites-and-projects-png-image-1878159.jpg" width='150' height='150' />
 ![Project Banner](https://i.ibb.co/hRSJ7FTX/pngtree-assignment-icon-for-your-design-websites-and-projects-png-image-1878159.jpg)  
 *Time to work smarter not harder for your assignments!*
 
