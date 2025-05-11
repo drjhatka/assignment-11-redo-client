@@ -1,6 +1,9 @@
 # Assignment Guru 🚀
 <img src="https://i.ibb.co/hRSJ7FTX/pngtree-assignment-icon-for-your-design-websites-and-projects-png-image-1878159.jpg" width='150' height='150' />
-*Time to work smarter not harder for your assignments!*
+
+**A collaborative platform for organizing, tracking, and completing academic assignments**
+
+This project provides students and educators with tools to:
 
 [![Live Site](https://img.shields.io/badge/Live_Site-Click_Here-blue?style=for-the-badge&logo=vercel)](https://assignment-11-redo-client.web.app/)
 
